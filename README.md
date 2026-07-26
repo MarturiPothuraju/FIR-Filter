@@ -24,6 +24,26 @@ module tap3fir(x,y,clk);
     end
 endmodule
 ```
+* ## Testbench
+```
+module tap3fir_tb();
+    reg clk;
+    reg [3:0] x;
+    wire [8:0] y;
+    tap3fir dup (x,y,clk);
+    initial begin
+        clk=1'b0;
+        x=4'b0001;
+        #8 x=4'b0010;//input after 8ns
+        #8 x=4'b0101;//input after 6ns 
+        #8 x=4'b0011;//input after sns
+    end
+    always #2 clk=~clk;
+    initial begin
+        #32 $finish;
+    end
+endmodule
+```
 |![Screenshot 2025-01-29 123045.png](./Screenshot%202025-01-29%20123045.png)|
 |:-----:|
 |Simulated Waveforms|
