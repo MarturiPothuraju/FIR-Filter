@@ -21,7 +21,7 @@ jobs:
           python-version: '3.x'
 
       - name: Run Update Script
-        run: python FIR-Filter/tap3fir.vupdate_readme.py
+        run: python FIR-Filter/update_readme.py
 
       - name: Commit and Push Changes
         run: |
